@@ -1,9 +1,3 @@
-from django.shortcuts import render
-# Create your views here.
-from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, DestroyAPIView, UpdateAPIView
-
-from links.models import Link
-from links.serializers import LinkSerializer
 from django.utils import timezone
 
 from rest_framework.views import APIView
@@ -43,28 +37,3 @@ class RecentLinkView(APIView):
         qs = models.Link.public.filter(created_date__gte=seven_days_ago)
         data = serializers.LinkSerializer(qs, many=True).data
         return Response(data, status=status.HTTP_200_OK)
-
-
-class PostListApi(ListAPIView):
-    queryset = Link.objects.filter(active=True)
-    serializer_class = LinkSerializer
-
-
-class PostCreateApi(CreateAPIView):
-    queryset = Link.objects.filter(active=True)
-    serializer_class = LinkSerializer
-
-
-class PostDetailApi(RetrieveAPIView):
-    queryset = Link.objects.filter(active=True)
-    serializer_class = LinkSerializer
-
-
-class PostUpdateApi(UpdateAPIView):
-    queryset = Link.objects.filter(active=True)
-    serializer_class = LinkSerializer
-
-
-class PostDeleteApi(DestroyAPIView):
-    queryset = Link.objects.filter(active=True)
-    serializer_class = LinkSerializer

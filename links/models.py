@@ -13,6 +13,8 @@ class Link(models.Model):
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     created_date = models.DateTimeField()
     active = models.BooleanField(default=True)
+    objects = models.Manager()
+    public = models.ActiveLinkManager()
 
     def __str__(self):
         return self.description
