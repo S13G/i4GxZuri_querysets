@@ -5,6 +5,8 @@ from django.db import models
 # Create your models here.
 from django.utils.text import slugify
 
+from links.managers import ActiveLinkManager
+
 
 class Link(models.Model):
     target_url = models.URLField(max_length=200)
