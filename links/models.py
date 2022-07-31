@@ -14,7 +14,7 @@ class Link(models.Model):
     created_date = models.DateTimeField()
     active = models.BooleanField(default=True)
     objects = models.Manager()
-    public = models.ActiveLinkManager()
+    public = ActiveLinkManager()
 
     def __str__(self):
         return self.description
